@@ -43,6 +43,20 @@ services:
     ports:
       - "8084:8000"
 
+  bfa:
+    container_name: bfa
+    build:
+      context: ./bfa
+    volumes:
+      - ./bfa:/app
+    ports:
+      - "8083:8000"
+    depends_on:
+      - recursos
+      - supervisor
+      - abrir_conta_agent
+      - cartao_credito_agent
+
   frontend-ag-ui:
     build: ./frontend2
     container_name: frontend-ag-ui
